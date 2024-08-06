@@ -15,7 +15,7 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
-model BarberShop {
+model Barbershop {
   id String @id @default(uuid())
   name String
   address String
@@ -24,4 +24,15 @@ model BarberShop {
   imageUrl String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  services BarbershopService[]
+}
+
+model BarbershopService {
+    id String @id @default(uuid())
+    name String
+    description String
+    imageUrl String
+    price Decimal @db.Decimal(10, 2)
+    barbershopId String
+    barbershop Barbershop @relation(fields: [barbershopId], references: [id])
 }
