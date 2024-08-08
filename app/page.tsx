@@ -5,17 +5,22 @@ import { useState } from "react"
 import Header from "./_components/ui/header"
 import { Input } from "./_components/ui/input"
 import { Button } from "./_components/ui/button"
-import { SearchIcon } from "lucide-react"
+import { EyeIcon, FootprintsIcon, SearchIcon } from "lucide-react"
 import Image from "next/image"
 import { Card, CardContent } from "./_components/ui/card"
 import { Badge, badgeVariants } from "./_components/ui/badge"
-import { Avatar, AvatarImage } from "./_components/ui/avatar"
+import { Avatar, AvatarImage, AvatarFallback } from "./_components/ui/avatar"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/ui/barbershop-items"
 
 const Home = async () => {
   const barbershops = await db.barbershop.findMany({})
   console.log({ barbershops })
+  const popularBarbershops = await db.barbershop.findMany({
+    orderBy: {
+      name: "desc",
+    },
+  })
 
   return (
     <div>
@@ -23,13 +28,36 @@ const Home = async () => {
       <Header />
       <div className="p-5">
         <h2 className="text-xl font-bold">Olá, Rafael</h2>
-        <p>Segunda-feira, 05 de agosto</p>
+        <p>Segunda, 5 de agosto</p>
 
         {/* BUSCA */}
         <div className="mt-6 flex items-center gap-2">
           <Input placeholder="Faça sua busca..." />
           <Button>
             <SearchIcon />
+          </Button>
+        </div>
+
+        {/* Botões */}
+        <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+          <Button className="gap-2" variant={"secondary"}>
+            <Image src="/tesoura.png" width={16} height={16} /> Cabelo
+          </Button>
+
+          <Button className="gap-2" variant={"secondary"}>
+            <Image src="/bigode.png" width={16} height={16} /> Cabelo
+          </Button>
+
+          <Button className="gap-2" variant={"secondary"}>
+            <Image src="/acabamento.png" width={16} height={16} /> Acabamento
+          </Button>
+
+          <Button className="gap-2" variant={"secondary"}>
+            <FootprintsIcon size={16} /> Pézinho
+          </Button>
+
+          <Button className="gap-2" variant={"secondary"}>
+            <EyeIcon size={16} /> Sobrancelha
           </Button>
         </div>
 
@@ -59,7 +87,8 @@ const Home = async () => {
               {/* DIV DA FOTO E NOME */}
               <div className="flex items-center gap-2">
                 <Avatar className="h-6 w-6">
-                  <AvatarImage src="https://utfs.io/f/c97a2dc9-cf62-468b-a851-bfd2bdde775f-16p.png"></AvatarImage>
+                  <AvatarImage src="https://utfs.io/f/07842cfb-7b30-4fdc-accc-719618dfa1f2-17s.png" />
+                  <AvatarFallback></AvatarFallback>
                 </Avatar>
                 <p className="text-sm">Barbearia FSW</p>
               </div>
@@ -84,7 +113,28 @@ const Home = async () => {
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
+
+        {/* POPULARES */}
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+          Populares
+        </h2>
+
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+          {popularBarbershops.map((barbershop) => (
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+          ))}
+        </div>
       </div>
+      <footer>
+        {/* CARD LÁ DE BAIXO */}
+        <Card className="px-5 py-6">
+          <CardContent>
+            <p className="text-sm text-gray-400">
+              @ 2023 Copyright <span className="font-bold">FSW Barber</span>
+            </p>
+          </CardContent>
+        </Card>
+      </footer>
     </div>
   )
 }
