@@ -5,13 +5,13 @@ import { useState } from "react"
 import Header from "./_components/ui/header"
 import { Input } from "./_components/ui/input"
 import { Button } from "./_components/ui/button"
-import { EyeIcon, FootprintsIcon, SearchIcon } from "lucide-react"
+import { SearchIcon } from "lucide-react"
 import Image from "next/image"
 import { Card, CardContent } from "./_components/ui/card"
-import { Badge, badgeVariants } from "./_components/ui/badge"
-import { Avatar, AvatarImage, AvatarFallback } from "./_components/ui/avatar"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/ui/barbershop-items"
+import { quickSearchOptions } from "./_constants/search"
+import BookingItem from "./_components/ui/booking-item"
 
 const Home = async () => {
   const barbershops = await db.barbershop.findMany({})
@@ -40,25 +40,17 @@ const Home = async () => {
 
         {/* Botões */}
         <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
-          <Button className="gap-2" variant={"secondary"}>
-            <Image src="/tesoura.png" width={16} height={16} /> Cabelo
-          </Button>
-
-          <Button className="gap-2" variant={"secondary"}>
-            <Image src="/bigode.png" width={16} height={16} /> Cabelo
-          </Button>
-
-          <Button className="gap-2" variant={"secondary"}>
-            <Image src="/acabamento.png" width={16} height={16} /> Acabamento
-          </Button>
-
-          <Button className="gap-2" variant={"secondary"}>
-            <FootprintsIcon size={16} /> Pézinho
-          </Button>
-
-          <Button className="gap-2" variant={"secondary"}>
-            <EyeIcon size={16} /> Sobrancelha
-          </Button>
+          {quickSearchOptions.map((option) => (
+            <Button key={option.title} className="gap-2" variant={"secondary"}>
+              <Image
+                alt={option.title}
+                src={option.imageUrl}
+                width={16}
+                height={16}
+              />{" "}
+              {option.title}
+            </Button>
+          ))}
         </div>
 
         {/* BANNER */}
@@ -72,36 +64,7 @@ const Home = async () => {
         </div>
 
         {/* AGENDAMENTO */}
-        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
-          Agendamentos
-        </h2>
-        <Card>
-          <CardContent className="flex justify-between rounded-xl p-0">
-            {/* ESQUERDA */}
-            <div className="flex flex-col gap-2 py-5 pl-5">
-              <Badge className="w-fit">Confirmado</Badge>
-
-              {/* TEXTO NOME DO PRODUTO */}
-              <h3 className="font-semibold">Corte de cabelo</h3>
-
-              {/* DIV DA FOTO E NOME */}
-              <div className="flex items-center gap-2">
-                <Avatar className="h-6 w-6">
-                  <AvatarImage src="https://utfs.io/f/07842cfb-7b30-4fdc-accc-719618dfa1f2-17s.png" />
-                  <AvatarFallback></AvatarFallback>
-                </Avatar>
-                <p className="text-sm">Barbearia FSW</p>
-              </div>
-            </div>
-
-            {/* DIREITA */}
-            <div className="flex flex-col items-center justify-center border-l-2 border-solid px-5">
-              <p className="text-sm">Agosto</p>
-              <p className="text-2xl">05</p>
-              <p className="text-sm">20:00</p>
-            </div>
-          </CardContent>
-        </Card>
+        <BookingItem />
 
         {/* RECOMENDADOS */}
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
