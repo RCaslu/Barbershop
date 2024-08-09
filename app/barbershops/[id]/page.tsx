@@ -1,14 +1,10 @@
 import { Button } from "@/app/_components/ui/button"
 import PhoneItem from "@/app/_components/ui/phone-item"
 import ServiceItem from "@/app/_components/ui/service-item"
+import { Sheet, SheetContent, SheetTrigger } from "@/app/_components/ui/sheet"
+import SidebarSheets from "@/app/_components/ui/sidebar-sheet"
 import { db } from "@/app/_lib/prisma"
-import {
-  ChevronLeftIcon,
-  MapPinIcon,
-  MenuIcon,
-  SmartphoneIcon,
-  StarIcon,
-} from "lucide-react"
+import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -43,24 +39,31 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
           className="object-cover"
         />
 
-        <Link href="http://localhost:3000/">
-          <Button
-            size="icon"
-            variant={"secondary"}
-            className="absolute left-4 top-4"
-            asChild
-          >
-            <ChevronLeftIcon />
-          </Button>
-        </Link>
-
         <Button
           size="icon"
           variant={"secondary"}
-          className="absolute right-4 top-4"
+          className="absolute left-4 top-4"
+          asChild
         >
-          <MenuIcon />
+          <Link href="/">
+            <ChevronLeftIcon />
+          </Link>
         </Button>
+
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              size="icon"
+              variant="outline"
+              className="absolute right-4 top-4"
+            >
+              <MenuIcon />
+            </Button>
+          </SheetTrigger>
+          <SheetContent className="overflow-y-auto">
+            <SidebarSheets />
+          </SheetContent>
+        </Sheet>
       </div>
 
       <div className="border-b border-solid p-5">
