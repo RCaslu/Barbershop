@@ -1,10 +1,11 @@
 import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./sheet"
 import { quickSearchOptions } from "@/app/_constants/search"
-import { Avatar, AvatarImage } from "@radix-ui/react-avatar"
+
 import { Button } from "./button"
 import { HomeIcon, CalendarIcon, LogOutIcon, MenuIcon } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { Avatar, AvatarImage } from "./avatar"
 
 const SidebarSheets = () => {
   return (
