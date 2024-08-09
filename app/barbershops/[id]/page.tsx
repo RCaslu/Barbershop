@@ -43,7 +43,7 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
           className="object-cover"
         />
 
-        <Link href="/">
+        <Link href="http://localhost:3000/">
           <Button
             size="icon"
             variant={"secondary"}
