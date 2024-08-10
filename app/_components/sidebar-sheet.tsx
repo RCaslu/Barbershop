@@ -10,6 +10,7 @@ import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
 import { signOut, useSession } from "next-auth/react"
 import { Avatar, AvatarImage } from "./ui/avatar"
 import SignInDialog from "./sign-in-dialog"
+import ThemeChanger from "./ui/themeChanges"
 
 const SidebarSheet = () => {
   const { data } = useSession()
@@ -65,6 +66,8 @@ const SidebarSheet = () => {
           <CalendarIcon size={18} />
           Agendamentos
         </Button>
+
+        <ThemeChanger />
       </div>
 
       <div className="flex flex-col gap-2 border-b border-solid py-5">

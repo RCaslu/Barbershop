@@ -37,6 +37,40 @@
 }
 
 @layer base {
+  .light {
+    --background: hsl(0 0% 98%);
+    --foreground: hsl(0 0% 20%);
+
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(0 0% 20%);
+
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(0 0% 20%);
+
+    --primary: hsl(210 100% 60%);
+    --primary-foreground: hsl(0 0% 100%);
+
+    --secondary: hsl(0 0% 90%);
+    --secondary-foreground: hsl(0 0% 20%);
+
+    --muted: hsl(0 0% 90%);
+    --muted-foreground: hsl(0 0% 50%);
+
+    --accent: hsl(0 0% 90%);
+    --accent-foreground: hsl(0 0% 20%);
+
+    --destructive: hsl(0 100% 50%);
+    --destructive-foreground: hsl(0 0% 100%);
+
+    --border: hsl(0 0% 80%);
+    --input: hsl(0 0% 80%);
+    --ring: hsl(0 0% 90%);
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
   * {
     @apply border-border antialiased;
   }
