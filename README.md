@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# BarberShop App
 
-## Getting Started
+## Descrição
 
-First, run the development server:
+O **BarberShop App** é uma aplicação web com foco mobile desenvolvida para facilitar o agendamento de serviços em barbearias. Os usuários podem selecionar uma barbearia, agendar serviços, cancelar agendamentos, autenticar-se com o Google, pesquisar por barbearias ou serviços e verificar seus agendamentos futuros.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**[Link do projeto Online](https://barbershop-rosy.vercel.app/)**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Funcionalidades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Selecionar Barbearia**: Escolha a barbearia onde deseja realizar o serviço.
+- **Agendar Serviço e Horário**: Marque um serviço e selecione um horário disponível na barbearia escolhida.
+- **Cancelar Agendamento**: Cancele agendamentos futuros se necessário.
+- **Autenticação com Google**: Faça login de forma segura usando a autenticação do Google.
+- **Pesquisar Barbearia ou Serviço**: Encontre barbearias ou serviços específicos usando a funcionalidade de pesquisa.
+- **Verificar Agendamentos**: Visualize seus agendamentos futuros e detalhes associados.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Tecnologias Utilizadas
 
-## Learn More
+- **Next.js**: Framework React para renderização do lado do servidor e geração estática de páginas.
+- **React**: Biblioteca JavaScript para construir interfaces de usuário.
+- **TypeScript**: Linguagem de programação que adiciona tipagem estática ao JavaScript.
+- **Node.js**: Ambiente de execução JavaScript no servidor.
+- **PostgreSQL**: Banco de dados relacional para armazenar informações sobre barbearias, serviços e agendamentos.
+- **Neon**: Plataforma que fornece uma camada de abstração sobre o PostgreSQL para facilidade de uso e escalabilidade.
+- **Tailwind CSS**: Framework de CSS para design responsivo e customização rápida.
+- **Google Cloud API**: Para autenticação e outros serviços fornecidos pela Google.
 
-To learn more about Next.js, take a look at the following resources:
+## Instalação
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Requisitos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Node.js (versão 14 ou superior)
+- PostgreSQL
+- Conta no Google para autenticação (Google Cloud API)
 
-## Deploy on Vercel
+### Note
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- O modo branco está disponível para uso, porém, ainda apresenta bugs
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Passos
+
+1. **Clone o repositório**
+
+   ```bash
+   git clone https://github.com/seuusuario/barbershop-app.git
+   cd barbershop-app
+   ```
+
+2. **Instale as dependências**
+
+   ```bash
+   npm install
+   ```
+
+3. **Configure o banco de dados**
+
+   Crie um banco de dados PostgreSQL e configure o arquivo `.env` com as credenciais apropriadas. O arquivo `.env.example` fornece um modelo para as variáveis de ambiente necessárias.
+
+4. **Configure a autenticação do Google**
+
+   Crie um projeto no [Google Cloud Console](https://console.cloud.google.com/), habilite a API de autenticação e obtenha suas credenciais. Adicione as credenciais ao arquivo `.env`.
+
+5. **Execute as migrações do banco de dados**
+
+   ```bash
+   npx prisma migrate dev
+   ```
+
+6. **Inicie o servidor de desenvolvimento**
+
+   ```bash
+   npm run dev
+   ```
+
+   O aplicativo estará disponível em [http://localhost:3000](http://localhost:3000).
+
+## Uso
+
+- **Acesse o aplicativo**: Navegue até [http://localhost:3000](http://localhost:3000) para ver a página inicial.
+- **Autentique-se com Google**: Use o botão de login do Google para autenticar sua conta.
+- **Selecione uma barbearia**: Utilize o menu para escolher a barbearia desejada.
+- **Agende um serviço**: Escolha um serviço e um horário disponível.
+- **Pesquise por barbearias ou serviços**: Utilize a barra de pesquisa para encontrar opções específicas.
+- **Verifique seus agendamentos**: Acesse a seção de agendamentos para ver e gerenciar seus compromissos futuros.
+- **Cancele um agendamento**: Na seção de agendamentos, você pode cancelar compromissos futuros se necessário.
+
+## Contribuição
+
+Se você deseja contribuir para o projeto, siga estas etapas:
+
+1. **Fork o repositório**
+2. **Crie uma branch para sua funcionalidade** (`git checkout -b minha-funcionalidade`)
+3. **Faça suas alterações** e **commit** (`git commit -am 'Adiciona nova funcionalidade'`)
+4. **Push** para o branch (`git push origin minha-funcionalidade`)
+5. **Crie um pull request**
