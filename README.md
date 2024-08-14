@@ -2,7 +2,7 @@
 
 ## Descrição
 
-O **BarberShop App** é uma aplicação web desenvolvida para facilitar o agendamento de serviços em barbearias. Os usuários podem selecionar uma barbearia, agendar serviços, cancelar agendamentos, autenticar-se com o Google, pesquisar por barbearias ou serviços e verificar seus agendamentos futuros.
+O **BarberShop App** é uma aplicação web com foco mobile desenvolvida para facilitar o agendamento de serviços em barbearias. Os usuários podem selecionar uma barbearia, agendar serviços, cancelar agendamentos, autenticar-se com o Google, pesquisar por barbearias ou serviços e verificar seus agendamentos futuros.
 
 ## Funcionalidades
 
