@@ -2,17 +2,9 @@ import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./sheet"
 import { quickSearchOptions } from "@/app/_constants/search"
 
 import { Button } from "./button"
-import {
-  HomeIcon,
-  CalendarIcon,
-  LogOutIcon,
-  MenuIcon,
-  LogInIcon,
-  Icon,
-} from "lucide-react"
+import { HomeIcon, CalendarIcon, LogOutIcon, LogInIcon } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { Avatar, AvatarImage } from "./avatar"
 import {
   Dialog,
   DialogContent,
