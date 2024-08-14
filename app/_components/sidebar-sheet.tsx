@@ -18,7 +18,7 @@ const SidebarSheet = () => {
   console.log(data?.user)
 
   return (
-    <SheetContent className="overflow-y-auto">
+    <SheetContent className="overflow-auto overflow-y-auto [&::-webkit-scrollbar]:hidden">
       <SheetHeader>
         <SheetTitle className="text-left">Menu</SheetTitle>
       </SheetHeader>
