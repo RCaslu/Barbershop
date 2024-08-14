@@ -34,6 +34,10 @@ O **BarberShop App** é uma aplicação web com foco mobile desenvolvida para fa
 - PostgreSQL
 - Conta no Google para autenticação (Google Cloud API)
 
+### Note
+
+- O modo branco está disponível para uso, porém, ainda apresenta bugs
+
 ### Passos
 
 1. **Clone o repositório**
